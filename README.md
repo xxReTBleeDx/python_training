@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @LtPBmFD
+I’m @LtPBmFD
 
 <!---
 LtPBmFD/LtPBmFD is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
