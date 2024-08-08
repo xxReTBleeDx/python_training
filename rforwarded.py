@@ -46,7 +46,7 @@ def main():
     verbose("Now forwarding remote port %d to %s:%d" % (options.port, remote[0], remote[1], options))
     try:
         reverse_forward_tunnel(options.port, remote[0], remote[1], client.get_transport())
-    except Exception as e:
+    except KeyboardInterrupt:
         print("C-c port forwarding stopped")
         sys.exit(1)
         
