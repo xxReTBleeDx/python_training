@@ -118,7 +118,7 @@ if __name__=='__main__':
     if args.listen:
         buffer = ''
     else:
-        buffer = sys.stding.read()
+        buffer = sys.stdin.read()
 
 nc = NetCat(args, buffer.encode())
 nc.run()
