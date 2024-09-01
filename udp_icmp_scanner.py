@@ -69,7 +69,7 @@ class Scanner:
         try:
             while True:
                 raw_buffer = self.socket.recvfrom(65535)[0]
-                ip_header = IP(raw_buffer[0:20])
+                ip_header = IP(raw_buffer[: offset])
                 if ip_header.protocol == "ICMP":
                     offset = ip_header.ihl * 4
                     buf = raw_buffer[offset:offset + 8]
