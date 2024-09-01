@@ -69,17 +69,17 @@ class Scanner:
         try:
             while True:
                 raw_buffer = self.socket.recvfrom(65535)[0]
-                ip_header = IP(raw_buffer[: offset])
+                ip_header = IP(raw_buffer[:offset])
                 if ip_header.protocol == "ICMP":
                     offset = ip_header.ihl * 4
                     buf = raw_buffer[offset:offset + 8]
                     icmp_header = ICMP(buf)
                     if icmp_header.code == 3 and icmp_header.type == 3:
                         if ipaddress.ip_address(ip_header.src_address) in ipaddress.IPv4Network(SUBNET):
-                            if raw_buffer[len(raw_buffer) - len(MESSAGE):] == bytes(MESSAGE, 'utf8'):
+                            if raw_buffer[len(raw_buffer) - len(MESSAGE):] == bytes(MESSAGE, 'utf-8'):
                                 tgt = str(ip_header.src_address)
                                 if tgt != self.host and tgt not in hosts_up:
-                                    hosts_up.add(str(ip_header.src_address))
+                                    hosts_up.add(tgt)
                                     print(f'Host Up: {tgt}')
         except KeyboardInterrupt:
             if os.name == 'nt':
